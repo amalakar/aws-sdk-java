@@ -12,11 +12,13 @@
   <name>AWS SDK for Java - Core</name>
   <description>The AWS SDK for Java - Core module holds the classes that are used by the individual service clients to interact with Amazon Web Services. Users need to depend on aws-java-sdk artifact for accessing individual client classes.</description>
   <url>https://aws.amazon.com/sdkforjava</url>
+  <packaging>jar</packaging>
   <dependencies>
     <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
       <version>${commons.logging.version}</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
@@ -118,6 +120,32 @@
             <maxmemory>1024m</maxmemory>
         </configuration>
       </plugin>
+      <!--<plugin>-->
+        <!--<groupId>org.apache.maven.plugins</groupId>-->
+        <!--<artifactId>maven-shade-plugin</artifactId>-->
+        <!--<version>3.0.0</version>-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<phase>package</phase>-->
+            <!--<goals>-->
+              <!--<goal>shade</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+              <!--&lt;!&ndash;<minimizeJar>true</minimizeJar>&ndash;&gt;-->
+              <!--<createDependencyReducedPom>true</createDependencyReducedPom>-->
+              <!--<dependencyReducedPomLocation>-->
+                <!--${java.io.tmpdir}/dependency-reduced-pom.xml-->
+              <!--</dependencyReducedPomLocation>-->
+              <!--<relocations>-->
+                <!--<relocation>-->
+                  <!--<pattern>com.acme.coyote</pattern>-->
+                  <!--<shadedPattern>hidden.coyote</shadedPattern>-->
+                <!--</relocation>-->
+              <!--</relocations>-->
+            <!--</configuration>-->
+          <!--</execution>-->
+        <!--</executions>-->
+      <!--</plugin>-->
     </plugins>
   </build>
 </project>

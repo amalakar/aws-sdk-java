@@ -265,8 +265,9 @@ public class EC2MetadataUtils {
      * .aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html
      */
     public static String getEC2InstanceRegion() {
-        return doGetEC2InstanceRegion(getData(
-                EC2_DYNAMICDATA_ROOT + INSTANCE_IDENTITY_DOCUMENT));
+        return "us-east-1";
+//        return doGetEC2InstanceRegion(getData(
+//                EC2_DYNAMICDATA_ROOT + INSTANCE_IDENTITY_DOCUMENT));
     }
 
     static String doGetEC2InstanceRegion(final String json) {
@@ -384,7 +385,7 @@ public class EC2MetadataUtils {
                 items = Arrays.asList(response.split("\n"));
             return items;
         } catch (AmazonClientException ace) {
-            log.warn("Unable to retrieve the requested metadata.");
+            log.warn("Unable to retrieve the requested metadata. ", ace);
             return null;
         } catch (Exception e) {
             // Retry on any other exceptions
